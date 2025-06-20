@@ -124,10 +124,10 @@ inline Float tonemap(Float x, Float_t clmp = 1.0, Float_t gamma = 2.2) {
 }
 
 int main() {
-  const int width = 64/ 3,
-            height = 64/3,
-            spp = 32,
-            depth = 12;
+  const int width = 32,
+            height = 32,
+            spp = 100,
+            depth = 24;
 
   Scene scene;
   CornellBox(scene);
