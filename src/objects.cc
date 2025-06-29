@@ -100,3 +100,30 @@ bool Scene::intersect(const Ray &ray, ObjectHit &hit) const {
 
   return found;
 }
+
+Direction Scene::pointLightNEE(const ObjectHit &hit) const {
+  const Float_t eps = 1e-4;
+
+  const Point &x = hit.p;
+  const Direction n = hit.n;
+
+  Direction L(0, 0, 0);
+  for (const auto &light : lights) {
+    const Direction wi = (light->p - x).normalize();
+    const Float cosThetaI = n.dot(wi);
+    const Float distance_squared = (light->p - x).norm_squared();
+    const Float distance = distance_squared.sqrt();
+
+    if (cosThetaI.value() <= 0) continue; // Light is behind the surface
+
+    ObjectHit shadowHit;
+    Ray shadowRay(x + n * eps, wi); // Small offset to avoid self-shadowing
+
+    if (intersect(shadowRay, shadowHit)) {
+      if (shadowHit.t.value() < distance.value()) continue; // Light is blocked by a closer object
+      L = L + light->pow * cosThetaI / distance_squared; // Light is blocked by a further object so ok
+    } else
+      L = L + light->pow * cosThetaI / distance_squared; // Light not blocked
+  }
+  return L;
+}

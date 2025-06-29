@@ -4,9 +4,9 @@ inline static
 Direction reflect(const Direction &wo, const Direction &n) { return wo - n * 2.0 * n.dot(wo); }
 
 inline static 
-Direction refract(const Direction &wo, const Direction &n, Float_t n1, Float_t n2) {
+Direction refract(const Direction &wo, const Direction &n, Float n1, Float n2) {
   // TODO: TEST THIS
-  const Float_t eta = n1 / n2;
+  const Float eta = n1 / n2;
   const Float cosThetaI = n.dot(wo);
   const Float sin2ThetaT = eta * eta * (1.0 - cosThetaI * cosThetaI);
   

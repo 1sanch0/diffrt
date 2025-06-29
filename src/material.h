@@ -10,7 +10,7 @@ struct RussianRouletteEvent {
 class Material {
   public:
     Material(const Direction &emission_, const Direction &kd, const Direction &ks, 
-             const Direction &kr, Float_t n1 = 1.0f, Float_t n2 = 1.5f)
+             const Direction &kr, Float n1 = 1.0f, Float n2 = 1.5f)
         : emission(emission_), diffuseBSDF(std::make_shared<DiffuseBSDF>(kd)),
           specularBSDF(std::make_shared<SpecularBSDF>(ks)),
           refractiveBSDF(std::make_shared<RefractiveBSDF>(kr, n1, n2)),

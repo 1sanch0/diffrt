@@ -2,7 +2,7 @@
 
 Proof of concept differentiable ray(path) tracer.
 
-Actually, it's just a little (and not very efficient) autograd engine (`src/autograd.h`) with a ray tracer on top of it. There is nothing special about the ray tracer.
+Actually, it's just a little (and not very efficient) (reverse-mode) autodiff engine (`src/autograd.h`) with a ray tracer on top of it. There is nothing special about the ray tracer.
 
 ## Example
 

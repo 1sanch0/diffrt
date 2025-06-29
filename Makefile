@@ -1,7 +1,7 @@
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -O2 -mtune=native -march=native -I./src
+CFLAGS = -Wall -Wextra -I./src -O3 -mtune=native -march=native
 LDFLAGS = -lm
 
 SRCS = src/main.cc \

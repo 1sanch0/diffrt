@@ -45,7 +45,7 @@ class SpecularBSDF : public BSDF {
 
 class RefractiveBSDF : public BSDF {
   public:
-    explicit RefractiveBSDF(const Direction &k_, Float_t n1_, Float_t n2_)
+    explicit RefractiveBSDF(const Direction &k_, Float n1_, Float n2_)
         : BSDF(k_), n1(n1_), n2(n2_) {}
 
     Direction evaluate(const Direction &wo, const Direction &wi, const Direction &n) const override;
@@ -55,5 +55,5 @@ class RefractiveBSDF : public BSDF {
     Float_t cosThetaI(const Direction &, const Direction &) const override { return 1.0; }
 
   private:
-    Float_t n1, n2;
+    Float n1, n2;
 };
