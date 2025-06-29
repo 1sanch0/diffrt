@@ -18,19 +18,14 @@ render(scene, target, ...);
 scene.objects[8]->material->diffuseBSDF->k.x.update(0.0);
 scene.objects[8]->material->diffuseBSDF->k.y.update(0.0);
 scene.objects[8]->material->diffuseBSDF->k.z.update(0.9);
-scene.objects[9]->material->diffuseBSDF->k.x.update(0.0);
-scene.objects[9]->material->diffuseBSDF->k.y.update(0.0);
-scene.objects[9]->material->diffuseBSDF->k.z.update(0.9);
 
 // Set learnable parameters
 scene.objects[8]->material->diffuseBSDF->k.requires_grad(true);
-scene.objects[9]->material->diffuseBSDF->k.requires_grad(true);
 
 // Define optimizer
 SGD optimizer(lr);
 // Add parameters to optimizer
 optimizer.add_param(scene.objects[8]->material->diffuseBSDF->k);
-optimizer.add_param(scene.objects[9]->material->diffuseBSDF->k);
 
 // Loop over the optimization steps (very similar to PyTorch)
 for (int i = 0; i < n; i++) {
@@ -51,9 +46,11 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
-### Result
+## Results
 
-![Result](example.png)
+|      SGD      |      ADAM      | 
+|:-------------:|:--------------:|
+|![SGD](sgd.png)|![SGD](adam.png)|
 
 ## Build
 ```bash
